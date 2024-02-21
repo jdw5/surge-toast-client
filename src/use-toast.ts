@@ -1,37 +1,41 @@
-import type { ToastData } from "./types"
+import type { ToastData, ToastOptions } from "./types"
 import { useId } from "./id"
 import { bus } from "./bus"
 
+// Fallback properties implementing the ToastOptions interface
+const fallback: ToastOptions = {
+    type: "default",
+    timeout: 3000,
+}
+
 export const useToast = () => {
-    const _toast = (data: ToastData) => {
-        toastOptions.value = { ...toastOptions.value, ...options }
-        toastOptions.value.id = useId()
-        toastOptions.value.data = data
-        bus.emit("add", toastOptions.value)
+    const toast = (data: ToastData) => {
+        let msg = {
+            ...fallback,
+            ...data,
+            id: useId(),
+        }
+        bus.emit("add", msg)
 
         setTimeout(() => {
-            bus.emit("remove", toastOptions.value.id)
-        }, toastOptions.value.timeout)
+            bus.emit("remove", msg.id)
+        }, msg.timeout)
     }
 
-    const toast = () => {
-
+    const success = (data: ToastData) => {
+        toast({ ...data, type: "success" })
     }
 
-    const success = () => {
-
+    const error = (data: ToastData) => {
+        toast({ ...data, type: "error" })
     }
 
-    const error = () => {
-
+    const warn = (data: ToastData) => {
+        toast({ ...data, type: "warning" })
     }
 
-    const warn = () => {
-
-    }
-
-    const info = () => {
-
+    const info = (data: ToastData) => {
+        toast({ ...data, type: "info" })
     }
 
     return {
@@ -40,6 +44,5 @@ export const useToast = () => {
         error,
         warn,
         info,
-        data: computed(() => toastOptions.value.data),
     }
 }

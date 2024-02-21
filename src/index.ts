@@ -1,3 +1,5 @@
-export { toast } from "./toast"
+export { plugin as toast } from "./toast"
 export { useToast } from "./use-toast"
+export { bus } from "./bus"
+export { useId } from "./id"
 export type { ToastData, ToastType } from "./types"

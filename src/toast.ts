@@ -1,15 +1,12 @@
 import { router, usePage } from "@inertiajs/vue3"
-import { useToast } from "./useToast"
+import { useToast } from "./use-toast"
+export type { ToastData } from "./types"
 
-const { toast: _toast } = useToast()
+const { toast } = useToast()
 
-export const toast = () => {
+export const plugin = () => {
     router.on("finish", () => {
-        const { toast: data }: { data: ToastData | null } = usePage().props
-        if (data) {
-            _toast(data, {
-                timeout: 5000,
-            })
-        }
+        const { toast: data }: { data: ToastData } = usePage().props
+        if (data) toast(data)
     })
 }

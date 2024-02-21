@@ -1,5 +1,5 @@
 let i: number = 0
 
-export const useId = () => {
-    return `toast_${i++}`
+export const useId = (prefix: string = 'toast') => {
+    return `${prefix}_${i++}`
 }
