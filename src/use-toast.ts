@@ -1,9 +1,9 @@
-import type { ToastData, ToastType } from "./toast"
-import useId from "./id"
-import bus from "./bus"
+import type { ToastData } from "./types"
+import { useId } from "./id"
+import { bus } from "./bus"
 
-export default () => {
-    const toast = (data: ToastData) => {
+export const useToast = () => {
+    const _toast = (data: ToastData) => {
         toastOptions.value = { ...toastOptions.value, ...options }
         toastOptions.value.id = useId()
         toastOptions.value.data = data
@@ -14,8 +14,32 @@ export default () => {
         }, toastOptions.value.timeout)
     }
 
+    const toast = () => {
+
+    }
+
+    const success = () => {
+
+    }
+
+    const error = () => {
+
+    }
+
+    const warn = () => {
+
+    }
+
+    const info = () => {
+
+    }
+
     return {
         toast,
+        success,
+        error,
+        warn,
+        info,
         data: computed(() => toastOptions.value.data),
     }
 }

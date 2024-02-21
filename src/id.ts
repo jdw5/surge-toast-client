@@ -1,5 +1,5 @@
 let i: number = 0
 
-export default () => {
+export const useId = () => {
     return `toast_${i++}`
 }

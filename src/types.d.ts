@@ -5,5 +5,5 @@ export interface ToastData {
     id: string;
     type?: ToastType;
     title?: string;
-    timeout?: number
+    timeout?: number;
 }
