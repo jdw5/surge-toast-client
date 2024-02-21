@@ -1,6 +1,6 @@
 import type { ToastData, ToastOptions } from "./types"
 import { useId } from "./id"
-import { bus } from "./bus"
+import { ref } from "vue"
 
 // Fallback properties implementing the ToastOptions interface
 const fallback: ToastOptions = {
@@ -9,17 +9,27 @@ const fallback: ToastOptions = {
 }
 
 export const useToast = () => {
+    const toasts = ref<ToastData[]>([])
+
     const toast = (data: ToastData) => {
         let msg = {
             ...fallback,
             ...data,
             id: useId(),
         }
-        bus.emit("add", msg)
+        toasts.value.push(msg)
 
         setTimeout(() => {
-            bus.emit("remove", msg.id)
+            remove(msg.id)
         }, msg.timeout)
+    }
+
+    const remove = (id: string) => {
+        toasts.value = toasts.value.filter((t) => t.id !== id)
+    }
+
+    const removeByIndex = (index: number) => {
+        toasts.value.splice(index, 1)
     }
 
     const success = (data: ToastData) => {
@@ -39,6 +49,9 @@ export const useToast = () => {
     }
 
     return {
+        toasts,
+        remove,
+        removeByIndex,
         toast,
         success,
         error,
