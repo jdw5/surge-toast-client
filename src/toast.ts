@@ -6,7 +6,12 @@ const { toast } = useToast()
 
 export const plugin = () => {
     router.on("finish", () => {
-        const { toast: data }: { data: ToastData } = usePage().props
-        if (data) toast(data)
+        const pageProps = usePage().props
+        
+        if ("toast" in pageProps) {
+            const { toast: data } = pageProps.toast as { toast: ToastData }
+
+            if (data) toast(data)
+        }
     })
 }
