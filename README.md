@@ -1,13 +1,12 @@
-## Surge Toast
+# Surge Toast
 A headless toast package for use in Vue-Inertia-Laravel projects. For seamless integration, use the [Surge Toast composer package]() in Laravel.
 
-
-### Installation
+## Installation
 ```console
 npm install surge-toast
 ```
 
-If you want to use the Laravel flash message integration, you can install the Laravel package as well.
+If you want to use the Laravel flash message integration, you can install the Laravel package as well. For documentation, see the package [here]().
 ```console
 composer require surge/toast
 ```
@@ -38,7 +37,7 @@ const { toasts } = useToast()
 </script>
 ```
 
-### Usage
+## Usage
 The package comes with a Laravel plugin that can be used to automatically render toast messages from the server on your frontend. This is handled automatically through intercepting the Inertia JS events, and sending via the event bus.
 
 You can also call the toasts manually using the `useToast` hook. 
@@ -51,4 +50,5 @@ The `examples/` directory contains three examples for using the package.
 
 You can copy these examples directly and modify as desired. If you are going to handle the logic yourself, ensure the `key` when performing a `v-for` loop is set to be `toast.id` or `index` to ensure smooth rendering in the VDom.
 
-### License
+## License
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.

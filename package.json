@@ -1,6 +1,6 @@
 {
 	"name": "surge-toast",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"description": "A Vue 3 + Inertia plugin to render headless toast components.",
 	"keywords": [
 		"laravel",
@@ -10,8 +10,10 @@
 	],
 	"author": "Joshua Wallace",
 	"repository": {
-		"type": "git"
+		"type": "git",
+		"url": "https://github.com/jdw5/surge-toast-client.git"
 	},
+	"homepage": "https://github.com/jdw5/surge-toast-client#readme",
 	"files": [
 		"dist"
 	],
@@ -20,6 +22,15 @@
 		"build": "vite build && vue-tsc --declaration --emitDeclarationOnly"
 	},
 	"type": "module",
+	"main": "./dist/surge-toast.umd.cjs",
+	"module": "./dist/surge-toast.js",
+	"types": "./dist/types/index.d.ts",
+	"exports": {
+		".": {
+			"import": "./dist/surge-toast.js",
+			"require": "./dist/surge-toast.umd.cjs"
+		}
+	},
 	"peerDependencies": {
 		"@inertiajs/vue3": "^1.0.0",
 		"axios": "^1.2.0",
