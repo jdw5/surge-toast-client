@@ -1,9 +1,11 @@
-<a href="https://badge.fury.io/js/surge-toast"><img src="https://badge.fury.io/js/surge-toast.svg" alt="npm version" height="18"></a>
 
 # Surge Toast
 A headless toast package for use in Vue-Inertia-Laravel projects. For seamless integration, use the [Surge Toast composer package]() in Laravel.
 
+<a href="https://badge.fury.io/js/surge-toast"><img src="https://badge.fury.io/js/surge-toast.svg" alt="npm version" height="18"></a>
+
 ## Installation
+Install the package via npm, pnpm or yarn. Via NPM:
 ```console
 npm install surge-toast
 ```

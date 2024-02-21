@@ -41,7 +41,7 @@ export const useToast = () => {
     }
 
     const warn = (data: ToastData) => {
-        toast({ ...data, type: "warning" })
+        toast({ ...data, type: "warn" })
     }
 
     const info = (data: ToastData) => {

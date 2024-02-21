@@ -1,4 +1,4 @@
-export type ToastType = 'success' | 'error' | 'warning' | 'info' | 'default';
+export type ToastType = 'success' | 'error' | 'warn' | 'info' | 'default';
 
 export interface ToastOptions {
     type?: ToastType;
@@ -7,6 +7,6 @@ export interface ToastOptions {
 export interface ToastData extends ToastOptions {
     title?: string;
     message?: string;
-    custom?: object;
+    more?: any;
     id: string;
 }
